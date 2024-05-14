@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import SideBar from './components/siderbar/SideBar';
+import HomeAdmin from './pages/Admin/HomeAdmin';
+import Users from './pages/Admin/Users';
+import HomeClient from './pages/Client/HomeClient';
+import Auth from './pages/Login'; 
+import Register from './pages/Register';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    {/* <Auth /> */}
+    {/* <Register /> */}
+    {/* <SideBar /> */}
+    {/* <Users /> */}
+    {/* <HomeAdmin /> */}
+    <HomeClient />
     </div>
   );
 }
