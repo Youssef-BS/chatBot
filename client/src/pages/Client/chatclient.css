@@ -5,6 +5,9 @@
 }
 
 .chatbox {
+    position: fixed;
+    bottom: 1%;
+    right: 4%;
     position: absolute;
     bottom: 30px;
     right: 30px;

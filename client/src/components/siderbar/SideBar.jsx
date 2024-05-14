@@ -15,7 +15,7 @@ const  SideBar=()=> {
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem active">
-              {/* <Home className="sidebarIcon" /> */}
+              <Home className="sidebarIcon" />
               {/* <Link to="/">Home</Link> */}
             </li>
           </ul>
@@ -28,14 +28,14 @@ const  SideBar=()=> {
               {/* <Link to="/Users">Users</Link> */}
             </li>
             <li className="sidebarListItem">
-              {/* <Person className="sidebarIcon" /> */}
+              <Person className="sidebarIcon" />
               {/* <Link to="/Chats">Chats</Link> */}
             </li>
             </ul>
           <ul className="sidebarList">
             {/* <Link href="/logout"> */}
               <li className="sidebarListItem" >
-                {/* <ExitToApp className="sidebarIcon" /> */}
+                <ExitToApp className="sidebarIcon" />
                {/* <Link to = "/">Logout</Link>  */}
               </li>
             {/* </Link> */}

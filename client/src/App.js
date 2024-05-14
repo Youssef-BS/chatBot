@@ -13,8 +13,8 @@ function App() {
     {/* <Register /> */}
     {/* <SideBar /> */}
     {/* <Users /> */}
-    {/* <HomeAdmin /> */}
-    <HomeClient />
+    <HomeAdmin />
+    {/* <HomeClient /> */}
     </div>
   );
 }

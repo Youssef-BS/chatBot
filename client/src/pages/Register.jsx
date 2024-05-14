@@ -1,9 +1,20 @@
 import "./login.css"
 import Logo from "../assets/Logo.JPG"
+import { useState } from "react";
 
 const Register = () => {
 
+  const [username, setUsername] = useState("") ; 
+  const [email , setEmail] = useState("") ;
+  const [password, setPassword] = useState("") ;
+  const [confirmPassword, setConfirmPassword] = useState("") ;
 
+  const handleRegister = async () => {
+    if(password !== confirmPassword ){
+      alert("Passwords don't match")
+    }
+    console.log({username, email, password, confirmPassword})
+  }
 
   return (
     <>
@@ -15,14 +26,14 @@ const Register = () => {
       <form className="glassmorphism-form">
         <h3>Register Here</h3>
         <label htmlFor="username">username</label>
-        <input type="text" value={""}  placeholder="Username" id="username" />    
+        <input type="text" value={username}  placeholder="Username" id="username" onChange={(e)=>setUsername(e.target.value)} />    
         <label htmlFor="email">Email</label>
-        <input type="text" value={""}  placeholder="Email" id="email" />
+        <input type="text" value={email}  placeholder="Email" id="email"  onChange={(e)=>setEmail(e.target.value)} />
         <label htmlFor="password">Password</label>
-        <input type="password" value={""}  placeholder="Password" id="password" />
+        <input type="password" value={password}  placeholder="Password" id="password"  onChange={(e)=> setPassword(e.target.value)}/>
         <label htmlFor="password">Confirm Password</label>
-        <input type="password" value={""}  placeholder="Password" id="password" />
-        <button onClick={""}>Log In</button>
+        <input type="password" value={confirmPassword}  placeholder="Password" id="password"  onChange={(e)=> setConfirmPassword(e.target.password)} />
+        <button onClick={handleRegister}>Register</button>
         <div className="social">
           <div className="go"><i className="fab fa-google"></i>Google</div>
         </div>
