@@ -2,20 +2,23 @@ import React , {useState , useEffect , useContext} from "react";
 import "./login.css"
 import Logo from "../assets/Logo.JPG"
 import { AuthContext } from '../context/authContext';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 
 const Auth = () => {
 
   const { login } = useContext(AuthContext);
   const {currentUser} = useContext(AuthContext); 
-
+  const navigate = useNavigate();
   const [email , setEmail] = useState();
   const [password , setPassword] = useState();
 
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
-    await login(email, password);    
+  const handleLogin = async () => {
+    await login(email, password);  
+    if (currentUser?.admin)
+        navigate("/admin/*");
+    else 
+      navigate("/client/*") ;  
   };
 
   return (
@@ -38,7 +41,7 @@ const Auth = () => {
         <div className="social">
           <div className="go"><i className="fab fa-google"></i> Google</div>
         </div>
-        <p className="loginHereParagraphe">Register here if you don't have an account !</p>
+        <Link to="/register"><p className="loginHereParagraphe">Register here if you don't have an account !</p></Link>
       </form>
     </>
   );

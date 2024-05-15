@@ -1,6 +1,7 @@
 import "./login.css"
 import Logo from "../assets/Logo.JPG"
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
 
@@ -37,7 +38,7 @@ const Register = () => {
         <div className="social">
           <div className="go"><i className="fab fa-google"></i>Google</div>
         </div>
-        <p className="loginHereParagraphe">Login here if you have an account !</p>
+      <Link to="/login"><p className="loginHereParagraphe">Login here if you have an account !</p></Link>  
       </form>
     </>
   );
