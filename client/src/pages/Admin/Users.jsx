@@ -17,6 +17,7 @@ const Users = () => {
 
   return (
     <>
+    <button className="addNewUserBtn">Add New User</button>
     <h1>Users</h1>
     <div className='container'>
         {users.map((user , index) => (

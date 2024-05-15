@@ -1,19 +1,22 @@
-import React , {useState , useEffect} from "react";
+import React , {useState , useEffect , useContext} from "react";
 import "./login.css"
 import Logo from "../assets/Logo.JPG"
-import axios from 'axios' ; 
+import { AuthContext } from '../context/authContext';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Auth = () => {
+
+  const { login } = useContext(AuthContext);
+  const {currentUser} = useContext(AuthContext); 
 
   const [email , setEmail] = useState();
   const [password , setPassword] = useState();
 
 
-  const handleLogin = async () => {
-   console.log({
-    email , password
-   })
-  }
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    await login(email, password);    
+  };
 
   return (
     <>
@@ -29,7 +32,7 @@ const Auth = () => {
         <input type="text" value={email}  placeholder="Email" id="email" onChange={(e)=>setEmail(e.target.value)}/>
 
         <label htmlFor="password">Password</label>
-        <input type="password" value={password}  placeholder="Password" id="password" onChange={(e)=>(e.target.value)} />
+        <input type="password" value={password}  placeholder="Password" id="password" onChange={(e)=>setPassword(e.target.value)} />
 
         <button onClick={handleLogin}>Log In</button>
         <div className="social">
