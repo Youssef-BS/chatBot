@@ -14,10 +14,11 @@ function App() {
     return currentUser ? children : <Navigate to="/login" />;
   };
 
-
+ 
   const ProtectedAdminRoute = ({ children }) => {
     return currentUser?.admin ? children : <Navigate to="/login" />;
   };
+
 
   const RedirectBasedOnRole = () => {
     if (currentUser?.admin) {
@@ -33,6 +34,7 @@ function App() {
     <div>
       <Router>
         <Routes>
+
           <Route path="/" element={<RedirectBasedOnRole />} />
           <Route path="/client/*" element={<ProtectedRoute><IndexClient /></ProtectedRoute>} />
           <Route path="/admin/*" element={<ProtectedAdminRoute><HomeAdmin /></ProtectedAdminRoute>} />

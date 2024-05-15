@@ -6,20 +6,21 @@ import { Link , useNavigate } from 'react-router-dom';
 
 const Auth = () => {
 
-  const { login } = useContext(AuthContext);
-  const {currentUser} = useContext(AuthContext); 
+  const { login, currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [email , setEmail] = useState();
-  const [password , setPassword] = useState();
+  const [email , setEmail] = useState("");
+  const [password , setPassword] = useState("");
+  const [errorMessage , setErrorMessage] = useState("");
 
 
-  const handleLogin = async () => {
-    await login(email, password);  
-    if (currentUser?.admin)
-        navigate("/admin/*");
-    else 
-      navigate("/client/*") ;  
+  const handleLogin = async (event) => {
+    if(!email || !password)
+      setErrorMessage("Please fill all the fields");
+    event.preventDefault();
+    await login(email, password);
+    navigate("/");
   };
+  
 
   return (
     <>
@@ -41,6 +42,7 @@ const Auth = () => {
         <div className="social">
           <div className="go"><i className="fab fa-google"></i> Google</div>
         </div>
+        <p style={{color : "red"}}>{errorMessage}</p>
         <Link to="/register"><p className="loginHereParagraphe">Register here if you don't have an account !</p></Link>
       </form>
     </>
