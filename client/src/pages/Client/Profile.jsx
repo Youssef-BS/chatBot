@@ -1,17 +1,46 @@
-import React, { useState } from 'react';
-import './profile.css'; 
+import React, { useState, useEffect , useContext} from 'react';
+import './profile.css';
+import axios from 'axios';
+import { AuthContext } from '../../context/authContext';
 
-const Profile = ({ userData, onUpdate }) => {
-  const [formData, setFormData] = useState(userData);
+const Profile = ({ userId }) => {
+
+  const {currentUser} = useContext(AuthContext);
+  const [userData, setUserData] = useState({
+    username: '',
+    interactionHistory: '',
+    contextualData: '',
+    analytics: '',
+    email: '',
+    password: ''
+  });
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8089/api/users/${currentUser._id}`);
+        setUserData(response.data);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, [userId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setUserData({ ...userData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onUpdate(formData);
+    try {
+      await axios.put(`http://localhost:8089/api/users/${currentUser._id}`, userData);
+      alert('User updated successfully!');
+    } catch (error) {
+      console.error('Error updating user:', error);
+    }
   };
 
   return (
@@ -21,7 +50,7 @@ const Profile = ({ userData, onUpdate }) => {
         type="text"
         id="username"
         name="username"
-        value={formData.username}
+        value={userData.username}
         onChange={handleChange}
       />
 
@@ -29,7 +58,7 @@ const Profile = ({ userData, onUpdate }) => {
       <textarea
         id="interactionHistory"
         name="interactionHistory"
-        value={formData.interactionHistory}
+        value={userData.interactionHistory}
         onChange={handleChange}
       ></textarea>
 
@@ -37,7 +66,7 @@ const Profile = ({ userData, onUpdate }) => {
       <textarea
         id="contextualData"
         name="contextualData"
-        value={formData.contextualData}
+        value={userData.contextualData}
         onChange={handleChange}
       ></textarea>
 
@@ -45,7 +74,7 @@ const Profile = ({ userData, onUpdate }) => {
       <textarea
         id="analytics"
         name="analytics"
-        value={formData.analytics}
+        value={userData.analytics}
         onChange={handleChange}
       ></textarea>
 
@@ -54,7 +83,7 @@ const Profile = ({ userData, onUpdate }) => {
         type="email"
         id="email"
         name="email"
-        value={formData.email}
+        value={userData.email}
         onChange={handleChange}
       />
 
@@ -63,7 +92,7 @@ const Profile = ({ userData, onUpdate }) => {
         type="password"
         id="password"
         name="password"
-        value={formData.password}
+        value={userData.password}
         onChange={handleChange}
       />
 

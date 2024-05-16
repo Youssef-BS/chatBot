@@ -6,7 +6,7 @@ import { AuthContext } from '../../context/authContext';
 
 const Navbar = () => {
 
-    const {logout , currentUser} = useContext(AuthContext) ; 
+    const {logout } = useContext(AuthContext) ; 
 
     const handleLogout = async()=>{
         await logout() ; 
@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="container">
+      <div className="container-user-navbar">
         <Link to="/" className="navbar-logo">
           <img src={Logo} alt='' width={40} height={40} style={{borderRadius : "50%"}}/>
         </Link>
@@ -24,9 +24,9 @@ const Navbar = () => {
             <Link to="/" className="navbar-link">Home</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/client/profile" className="navbar-link">See your Profile {currentUser.username}</Link>
+            <Link to="/client/profile" className="navbar-link">See your Profile</Link>
           </li>
-          <li className="navbar-item">Link
+          <li className="navbar-item">
             <Link to="/" className="navbar-link" onClick={handleLogout}>Deconnect</Link>
           </li>
         </ul>
