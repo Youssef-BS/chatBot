@@ -1,12 +1,21 @@
 import React , {useContext} from 'react';
-import { Home, Person, ExitToApp } from '@material-ui/icons';
+import { Home, Person, ExitToApp , Mail} from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import Logo from "../../assets/Logo.JPG";
 import './sideBar.css';
+import { AuthContext } from '../../context/authContext';
 
 
 const  SideBar=()=> {
  
+
+  const {logout} = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logout();
+    window.location.href = '/login';
+  }
+
   return (
     <div className="sidebar">
         <img src={Logo} alt='logo' className='logoSideBar' />
@@ -16,7 +25,7 @@ const  SideBar=()=> {
           <ul className="sidebarList">
             <li className="sidebarListItem active">
               <Home className="sidebarIcon" />
-              {/* <Link to="/">Home</Link> */}
+              <Link to="/">Home</Link>
             </li>
           </ul>
         </div>
@@ -24,21 +33,20 @@ const  SideBar=()=> {
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem">
-              {/* <Person className="sidebarIcon" /> */}
-              {/* <Link to="/Users">Users</Link> */}
+              <Person className="sidebarIcon" /> 
+             <Link to="/users">Users</Link>
             </li>
             <li className="sidebarListItem">
-              <Person className="sidebarIcon" />
-              {/* <Link to="/Chats">Chats</Link> */}
+              <Mail className="sidebarIcon" />
+              <Link to="/Chats">Chats</Link>
             </li>
             </ul>
           <ul className="sidebarList">
             {/* <Link href="/logout"> */}
               <li className="sidebarListItem" >
                 <ExitToApp className="sidebarIcon" />
-               {/* <Link to = "/">Logout</Link>  */}
+               <Link to="/" onClick={handleLogout}>Logout</Link> 
               </li>
-            {/* </Link> */}
           </ul>
         </div>
       </div>
