@@ -5,8 +5,7 @@ import Users from './Users'
 const HomeAdmin = () => {
   return (
     <>
-        <SideBar />
-        <Users />
+        
     </>
   )
 }

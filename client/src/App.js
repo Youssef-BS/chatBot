@@ -35,7 +35,7 @@ function App() {
       <Router>
         <Routes>
 
-          <Route path="/" element={<RedirectBasedOnRole />} />
+          <Route path="/*" element={<RedirectBasedOnRole />} />
           <Route path="/client/*" element={<ProtectedRoute><IndexClient /></ProtectedRoute>} />
           <Route path="/admin/*" element={<ProtectedAdminRoute><IndexAdmin /></ProtectedAdminRoute>} />
           <Route path="/login" element={<Auth />} />

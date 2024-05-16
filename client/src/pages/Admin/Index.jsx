@@ -4,7 +4,7 @@ import Layout from './Layout'
 import HomeAdmin from './HomeAdmin'
 import Users from './Users'
 
-const IndexClient = () => {
+const IndexAdmin = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout><HomeAdmin /></Layout>} />
@@ -13,4 +13,4 @@ const IndexClient = () => {
   )
 }
 
-export default IndexClient
+export default IndexAdmin

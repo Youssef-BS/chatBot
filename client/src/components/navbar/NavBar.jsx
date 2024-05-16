@@ -24,9 +24,9 @@ const Navbar = () => {
             <Link to="/" className="navbar-link">Home</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/profile" className="navbar-link">See your Profile {currentUser.username}</Link>
+            <Link to="/client/profile" className="navbar-link">See your Profile {currentUser.username}</Link>
           </li>
-          <li className="navbar-item">
+          <li className="navbar-item">Link
             <Link to="/" className="navbar-link" onClick={handleLogout}>Deconnect</Link>
           </li>
         </ul>

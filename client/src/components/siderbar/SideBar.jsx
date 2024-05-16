@@ -34,7 +34,7 @@ const  SideBar=()=> {
           <ul className="sidebarList">
             <li className="sidebarListItem">
               <Person className="sidebarIcon" /> 
-             <Link to="/users">Users</Link>
+             <Link to="/admin/users">Users</Link>
             </li>
             <li className="sidebarListItem">
               <Mail className="sidebarIcon" />
