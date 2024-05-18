@@ -15,29 +15,27 @@ function ChatClient() {
         setInputText(event.target.value);
     };
 
-    const handleSendMessage = () => {
+    const handleSendMessage = async () => {
         if (inputText.trim() === '') return;
 
         const newMessage = { name: 'User', message: inputText };
         setMessages(prevMessages => [...prevMessages, newMessage]);
         setInputText('');
 
-        fetch('http://127.0.0.1:5000/predict', {
-            method: 'POST',
-            body: JSON.stringify({ message: inputText }),
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(response => response.json())
-        .then(response => {
-            const botMessage = { name: 'Sam', message: response.answer };
+        try {
+            const response = await fetch('http://127.0.0.1:5000/chat', {
+                method: 'POST',
+                body: JSON.stringify({ message: inputText }),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+            const responseData = await response.json();
+            const botMessage = { name: 'Sam', message: responseData.message };
             setMessages(prevMessages => [...prevMessages, botMessage]);
-        })
-        .catch(error => {
+        } catch (error) {
             console.error('Error:', error);
-        });
+        }
     };
 
     const handleKeyPress = (event) => {
