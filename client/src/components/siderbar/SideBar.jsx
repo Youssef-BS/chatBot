@@ -42,7 +42,7 @@ const  SideBar=()=> {
             </li>
             <li className="sidebarListItem">
               <Mail className="sidebarIcon" />
-              <Link to="/Chats">Chats</Link>
+              <Link to="/admin/chat">Chats</Link>
             </li>
             </ul>
           <ul className="sidebarList">
