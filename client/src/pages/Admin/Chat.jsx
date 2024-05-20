@@ -19,7 +19,7 @@ function Chat() {
   };
 
   return (
-    <div className="container d-flex justify-content-center">
+    <div className="container d-flex justify-content-center ">
       <div className="card p-4">
         <h2 className="mb-4">Add New Response</h2>
         <div className="mb-3">
